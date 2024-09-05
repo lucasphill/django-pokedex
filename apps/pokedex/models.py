@@ -3,7 +3,7 @@ from django.db import models
 class TblPokemon(models.Model):
     id_pokemon = models.AutoField(primary_key=True)
     num_pokedex_pokemon = models.IntegerField()
-    nome_pokemon = models.CharField(max_length=40)
+    name_pokemon = models.CharField(max_length=40)
     img_pokemon = models.CharField(max_length=255, blank=True, null=True)
     type_1_pokemon = models.ForeignKey('TblTypes', models.DO_NOTHING, db_column='type_1_pokemon')
     type_2_pokemon = models.ForeignKey('TblTypes', models.DO_NOTHING, db_column='type_2_pokemon', related_name='tblpokemon_type_2_pokemon_set', blank=True, null=True)

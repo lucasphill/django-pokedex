@@ -1,0 +1,40 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+
+<section>
+
+{% if pokemons %}
+    {% for pokemon in pokemons %}
+
+        id: {{ pokemon.id_pokemon }}
+        Numero da pokedex: {{ pokemon.num_pokedex_pokemon }}
+        Nome: {{ pokemon.nome_pokemon }}
+        Tipo 1: {{ pokemon.type_1_pokemon.type }}
+        Tipo 2: {{ pokemon.type_2_pokemon.type }}
+        <br>
+
+    {% endfor %}
+{% endif %}
+
+</section>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if pokemons.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ pokemons.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ pokemons.number }} of {{ pokemons.paginator.num_pages }}.
+        </span>
+
+        {% if pokemons.has_next %}
+            <a href="?page={{ pokemons.next_page_number }}">next</a>
+            <a href="?page={{ pokemons.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
