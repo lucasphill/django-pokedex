@@ -9,11 +9,14 @@
 {% if pokemons %}
     {% for pokemon in pokemons %}
 
+        <a href="{% url 'pokemon' pokemon.id_pokemon %}">
         id: {{ pokemon.id_pokemon }}
         Numero da pokedex: {{ pokemon.num_pokedex_pokemon }}
         Nome: {{ pokemon.name_pokemon }}
         Tipo 1: {{ pokemon.type_1_pokemon.type }}
         Tipo 2: {{ pokemon.type_2_pokemon.type }}
+        {% if pokemon.legendary_pokemon == 1 %}Lendario{% endif %}
+        </a>
         <br>
 
     {% endfor %}
@@ -21,6 +24,6 @@
 
 </section>
 
-{% include 'shared/_pagination.html' with pokemons=pokemons query=query %}
+{% include 'partials/_pagination.html' with pokemons=pokemons query=query %}
 
 {% endblock %}

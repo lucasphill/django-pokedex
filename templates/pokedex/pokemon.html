@@ -1,0 +1,36 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block content %}
+
+{% include 'partials/_nav.html' with types=types %}
+
+<section>
+
+{% if pokemon %}
+
+<h1>{{ pokemon.name_pokemon }}</h1>
+
+    id: {{ pokemon.id_pokemon }}<br>
+    Numero da pokedex: {{ pokemon.num_pokedex_pokemon }}<br>
+    Tipo 1: {{ pokemon.type_1_pokemon.type }}<br>
+    Tipo 2: {{ pokemon.type_2_pokemon.type }}<br>
+    Pontos totais: {{ pokemon.total_pokemon }}<br>
+    Vida: {{ pokemon.hp_pokemon }}<br>
+    Ataque: {{ pokemon.atk_pokemon }}<br>
+    Defesa: {{ pokemon.def_pokemon }}<br>
+    Velocidade de ataque: {{ pokemon.sp_atk_pokemon }}<br>
+    Velocidade de defesa: {{ pokemon.sp_def_pokemon }}<br>
+    Velocidade: {{ pokemon.speed_pokemon }}<br>
+    Geração: {{ pokemon.generation_pokemon }}<br>
+    {% if pokemon.legendary_pokemon == 1 %}
+    Lendário <br>
+    {% endif %}
+    {% if pokemon.img_pokemon %}
+    <img src="{{ pokemon.img_pokemon }}">
+    {% endif %}
+
+{% endif %}
+
+</section>
+
+{% endblock %}

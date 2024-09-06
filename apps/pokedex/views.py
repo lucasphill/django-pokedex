@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from django.core.paginator import Paginator
 from apps.pokedex.models import TblPokemon, TblTypes
@@ -46,4 +46,15 @@ def type(request, type):
     return render(request, 'pokedex/index.html', {'pokemons': pokemons, 'types': type_list_for_menu})
         
 
+def pokemon(request, id):
+    
+    pokemon = get_object_or_404(TblPokemon, pk=id)
+    
+    return render(request, 'pokedex/pokemon.html', {'pokemon':pokemon, 'types': type_list_for_menu})
 
+def legendary_list(request):
+    
+    pokemon = TblPokemon.objects.filter(legendary_pokemon=1)
+    list = paginador(request, pokemon)
+    
+    return render(request, 'pokedex/index.html', {'pokemons':list, 'types': type_list_for_menu})
