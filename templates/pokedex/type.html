@@ -2,12 +2,12 @@
 {% load static %}
 {% block content %}
 
-{% include 'partials/_nav.html' with types=types %}
+{% include 'partials/_nav.html' with poke=types %}
 
 <section>
 
-{% if pokemons %}
-    {% for pokemon in pokemons %}
+{% if type %}
+    {% for pokemon in type %}
 
         id: {{ pokemon.id_pokemon }}
         Numero da pokedex: {{ pokemon.num_pokedex_pokemon }}
@@ -20,7 +20,5 @@
 {% endif %}
 
 </section>
-
-{% include 'shared/_pagination.html' with pokemons=pokemons query=query %}
 
 {% endblock %}

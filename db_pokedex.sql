@@ -1,6 +1,8 @@
 CREATE DATABASE db_pokedex;
 USE db_pokedex;
 
+-- Pode-se criar o banco de dados primeiro e depois fazer o migrate pelo django ou fazer o migrate e depois inserir as linhas abaixo direto no banco
+
 CREATE TABLE tbl_types (
   type VARCHAR(8) NOT NULL,
   weaknesses_1 VARCHAR(8) NULL,
